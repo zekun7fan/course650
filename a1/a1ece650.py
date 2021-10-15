@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 import sys
 import re
-# import matplotlib.pyplot as plt
 
 # YOUR CODE GOES HERE
 
@@ -245,23 +244,6 @@ def show_graph(adj_list, isvertex_map):
                 flag_table[i][neighbor_snum] = True
                 flag_table[neighbor_snum][i] = True
     print(" }\n")
-
-    # for i in range(1, len(adj_list)):
-    #     for neighbor_snum in adj_list[i]:
-    #         src = pmap[i]
-    #         dst = pmap[neighbor_snum]
-    #         x = [src[0], dst[0]]
-    #         y = [src[1], dst[1]]
-    #         plt.plot(x, y)
-    #
-    # # naming the x axis
-    # plt.xlabel('x - axis')
-    # # naming the y axis
-    # plt.ylabel('y - axis')
-    # # giving a title to my graph
-    # plt.title('Road Map')
-    # # function to show the plot
-    # plt.show()
 
 
 def calculate_intersection(l1, l2):

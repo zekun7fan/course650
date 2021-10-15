@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="951db135-f0d5-4b50-b267-45b74623bc10" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/a1ece650.py" beforeDir="false" afterPath="$PROJECT_DIR$/a1ece650.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user.yml" beforeDir="false" afterPath="$PROJECT_DIR$/user.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,6 +145,7 @@
       <workItem from="1634244286877" duration="566000" />
       <workItem from="1634248894440" duration="2383000" />
       <workItem from="1634255851400" duration="2094000" />
+      <workItem from="1634338864017" duration="76000" />
     </task>
     <servers />
   </component>
@@ -156,7 +157,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/a1ece650.py</url>
-          <line>36</line>
+          <line>35</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
