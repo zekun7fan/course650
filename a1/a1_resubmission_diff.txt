@@ -1,0 +1,69 @@
+27c27
+<         print("read a line:", line)
+---
+>         # MODIFY1: delete readline prompt statement
+30c30
+<     print("Finished reading input")
+---
+>     # MODIFY2: delete finishing prompt statement
+61c61,62
+<     print("[ERROR] the format of command is not correct\n")
+---
+>     # MODIFY3: modify the format of error message
+>     print("Error: Incorrect input format")
+66c67,68
+<         print("[ERROR] ADD: street name already exists !\n")
+---
+>         # MODIFY4: modify the format of error message
+>         print("Error: street currently exists.")
+69c71,72
+<         print("[ERROR] ADD: add at least one pair of coordinates !\n")
+---
+>         # MODIFY5: modify the format of error message
+>         print("Error: add at least one pair of coordinates.")
+86c89,90
+<         print("[ERROR] MOD: street name not exists !\n")
+---
+>         # MODIFY6: modify the format of error message
+>         print("Error: 'mod' or 'rm' specified for a street that does not exist.")
+89c93,94
+<         print("[ERROR] MOD: specify at least one pair of coordinates !\n")
+---
+>         # MODIFY7: modify the format of error message
+>         print("Error: specify at least one pair of coordinates.")
+106c111,112
+<         print("[ERROR] RM: street name not exists !\n")
+---
+>         # MODIFY8: modify the format of error message
+>         print("Error: 'mod' or 'rm' specified for a street that does not exist.")
+225c231
+<     print("V = { \n")
+---
+>     print("V = {")
+229,230c235,237
+<             print(str(isvertex_map[v][1]) + ":  " + str(v) + "\n")
+<     print(" }\n")
+---
+>             # MODIFY9: show two decimal places
+>             print(str(isvertex_map[v][1]) + ":  (" + ("%.2f" % v[0]) + "," + ("%.2f" % v[1]) + ")")
+>     print("}")
+239c246,248
+<     print("E = { \n")
+---
+>     # MODIFY10: firstly add edges to a list(doesn't change what edges to output), then print these edges with a comma
+>     # if it is not the last one. Otherwise print the last edge without a comma
+>     edgelist = list()
+243c252
+<                 print("<" + str(i) + "," + str(neighbor_snum) + ">" + ",")
+---
+>                 edgelist.append(str("<" + str(i) + "," + str(neighbor_snum) + ">"))
+246c255,261
+<     print(" }\n")
+---
+>     print("E = {")
+>     for i in range(len(edgelist)):
+>         if i < len(edgelist)-1:
+>             print (edgelist[i] + ",")
+>         else:
+>             print (edgelist[i])
+>     print("}")
