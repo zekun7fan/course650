@@ -1,5 +1,0 @@
-add "test one" (1,1) (4,4)
-add "test two" (0,4) (4,0)
-add "test three" (9,1) (12,4)
-add "test four" (8,4) (12,0)
-gg
