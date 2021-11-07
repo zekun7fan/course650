@@ -54,7 +54,7 @@ int main(int argc, char **argv) {
                 std::string single_edge = smatch.str();
                 size_t index = single_edge.find(',');
                 int src = atoi(single_edge.substr(1, index).c_str());
-                int dst = atoi(single_edge.substr(index + 1, single_edge.size()).c_str());
+                int dst = atoi(single_edge.substr(index + 1, single_edge.size()-1).c_str());
                 if (src < 1 || src > num_of_vertex || dst < 1 || dst > num_of_vertex) {
                     // exceed the range
                     std::cout << "Error: Vertex does not exist" << std::endl;
