@@ -83,6 +83,7 @@ int main(int argc, char **argv) {
             state = 4;
         }
     }
+    return 0;
 }
 
 
