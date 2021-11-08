@@ -80,7 +80,7 @@ int main(int argc, char **argv) {
 std::vector<int> find_shortest_path(int src, int dst) {
     bool visited[num_of_vertex + 1];
     int precessor[num_of_vertex + 1];
-    for (int i = 0; i < num_of_vertex; ++i) {
+    for (int i = 0; i < num_of_vertex + 1; ++i) {
         visited[i] = false;
         precessor[i] = -1;
     }
