@@ -5,6 +5,7 @@
 /home/ece650/cmake-build-debug-remote-host/CMakeFiles/edit_cache.dir
 /home/ece650/cmake-build-debug-remote-host/CMakeFiles/tests.dir
 /home/ece650/cmake-build-debug-remote-host/CMakeFiles/rgen.dir
+/home/ece650/cmake-build-debug-remote-host/CMakeFiles/readline_process.dir
 /home/ece650/cmake-build-debug-remote-host/CMakeFiles/ece650-a3.dir
 /home/ece650/cmake-build-debug-remote-host/CMakeFiles/install/local.dir
 /home/ece650/cmake-build-debug-remote-host/CMakeFiles/ece650-a2.dir

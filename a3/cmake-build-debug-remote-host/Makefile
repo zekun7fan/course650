@@ -183,6 +183,19 @@ rgen/fast:
 .PHONY : rgen/fast
 
 #=============================================================================
+# Target rules for targets named readline_process
+
+# Build rule for target.
+readline_process: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 readline_process
+.PHONY : readline_process
+
+# fast build rule for target.
+readline_process/fast:
+	$(MAKE) -f CMakeFiles/readline_process.dir/build.make CMakeFiles/readline_process.dir/build
+.PHONY : readline_process/fast
+
+#=============================================================================
 # Target rules for targets named ece650-a3
 
 # Build rule for target.
@@ -262,6 +275,33 @@ ece650-a3.cpp.s:
 	$(MAKE) -f CMakeFiles/ece650-a3.dir/build.make CMakeFiles/ece650-a3.dir/ece650-a3.cpp.s
 .PHONY : ece650-a3.cpp.s
 
+readline_process.o: readline_process.cpp.o
+
+.PHONY : readline_process.o
+
+# target to build an object file
+readline_process.cpp.o:
+	$(MAKE) -f CMakeFiles/readline_process.dir/build.make CMakeFiles/readline_process.dir/readline_process.cpp.o
+.PHONY : readline_process.cpp.o
+
+readline_process.i: readline_process.cpp.i
+
+.PHONY : readline_process.i
+
+# target to preprocess a source file
+readline_process.cpp.i:
+	$(MAKE) -f CMakeFiles/readline_process.dir/build.make CMakeFiles/readline_process.dir/readline_process.cpp.i
+.PHONY : readline_process.cpp.i
+
+readline_process.s: readline_process.cpp.s
+
+.PHONY : readline_process.s
+
+# target to generate assembly for a file
+readline_process.cpp.s:
+	$(MAKE) -f CMakeFiles/readline_process.dir/build.make CMakeFiles/readline_process.dir/readline_process.cpp.s
+.PHONY : readline_process.cpp.s
+
 rgen.o: rgen.cpp.o
 
 .PHONY : rgen.o
@@ -329,6 +369,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... tests"
 	@echo "... rgen"
+	@echo "... readline_process"
 	@echo "... ece650-a3"
 	@echo "... install/local"
 	@echo "... ece650-a2"
@@ -338,6 +379,9 @@ help:
 	@echo "... ece650-a3.o"
 	@echo "... ece650-a3.i"
 	@echo "... ece650-a3.s"
+	@echo "... readline_process.o"
+	@echo "... readline_process.i"
+	@echo "... readline_process.s"
 	@echo "... rgen.o"
 	@echo "... rgen.i"
 	@echo "... rgen.s"

@@ -59,17 +59,17 @@ def parse_command(cmd):
         gg()
         return
     # MODIFY3: modify the format of error message
-    print("Error: Incorrect input format")
+    print("Error: Incorrect input format", file=sys.stderr)
 
 
 def add(name, tplist):
     if name in info:
         # MODIFY4: modify the format of error message
-        print("Error: street currently exists.")
+        print("Error: street currently exists.", file=sys.stderr)
         return
     if len(tplist) == 1:
         # MODIFY5: modify the format of error message
-        print("Error: add at least one pair of coordinates.")
+        print("Error: add at least one pair of coordinates.", file=sys.stderr)
         return
     str_info = list()
     for i in range(0, len(tplist) - 1):
@@ -87,11 +87,11 @@ def add(name, tplist):
 def mod(name, tplist):
     if name not in info:
         # MODIFY6: modify the format of error message
-        print("Error: 'mod' or 'rm' specified for a street that does not exist.")
+        print("Error: 'mod' or 'rm' specified for a street that does not exist.", file=sys.stderr)
         return
     if len(tplist) == 1:
         # MODIFY7: modify the format of error message
-        print("Error: specify at least one pair of coordinates.")
+        print("Error: specify at least one pair of coordinates.", file=sys.stderr)
         return
     str_info = list()
     for i in range(0, len(tplist) - 1):
@@ -109,7 +109,7 @@ def mod(name, tplist):
 def rm(name):
     if name not in info:
         # MODIFY8: modify the format of error message
-        print("Error: 'mod' or 'rm' specified for a street that does not exist.")
+        print("Error: 'mod' or 'rm' specified for a street that does not exist.", file=sys.stderr)
         return
     del info[name]
 
@@ -298,8 +298,8 @@ def output_to_a2(adj_list, isvertex_map):
         if i != len(edgelist)-1:
             e_str += ","
     e_str += "}"
-    print(v_str)
-    print(e_str)
+    print(v_str, flush=True)
+    print(e_str, flush=True)
 
 
 def calculate_intersection(l1, l2):

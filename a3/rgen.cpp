@@ -11,6 +11,7 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <fstream>
 
 
 static const char alpha[] = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N',
@@ -103,33 +104,39 @@ std::string genStreetName(){
     }
 }
 
+unsigned int genRandom(std::ifstream& urandom, int upper){
+    unsigned int num = 100;
+    urandom.read((char *)&num, sizeof(int));
+    return num % upper;
+}
 
-coordinate genCord(int c){
-    int x = rand() % (2*c+1) - c;
-    int y = rand() % (2*c+1) - c;
+
+coordinate genCord(int c, std::ifstream& urandom){
+    int x = genRandom(urandom, 2*c+1) - c;
+    int y = genRandom(urandom, 2*c+1) - c;
     coordinate cord;
     cord.x = x;
     cord.y = y;
     return cord;
 }
 
-segment genSegment(segment pre, int c){
+segment genSegment(segment pre, int c, std::ifstream& urandom){
     segment seg;
     seg.c1.x = pre.c2.x;
     seg.c1.y = pre.c2.y;
     while(true){
-        seg.c2 = genCord(c);
+        seg.c2 = genCord(c, urandom);
         if (isNonZeroLength(seg)){
             return seg;
         }
     }
 }
 
-segment genSegment(int c){
+segment genSegment(int c, std::ifstream& urandom){
     segment seg;
     while(true){
-        seg.c1 = genCord(c);
-        seg.c2 = genCord(c);
+        seg.c1 = genCord(c, urandom);
+        seg.c2 = genCord(c, urandom);
         if (isNonZeroLength(seg)){
             return seg;
         }
@@ -175,17 +182,17 @@ bool isSegmentVaild(const std::string& name, segment seg){
     return true;
 }
 
-int genStreet(const std::string& name, int n, int c){
+int genStreet(const std::string& name, int n, int c, std::ifstream& urandom){
     // num of segments in this street
-    int num_of_seg = rand() % n + 1;
+    int num_of_seg = genRandom(urandom, n) + 1;
     int count = 0;
     for (int i = 0; i < num_of_seg; ++i) {
         while(count < MAX_ATTETMP){
             segment seg;
             if (i==0){
-                seg = genSegment(c);
+                seg = genSegment(c, urandom);
             }else{
-                seg = genSegment(map[name].back(),c);
+                seg = genSegment(map[name].back(),c, urandom);
             }
             if (isSegmentVaild(name, seg)){
                 map[name].push_back(seg);
@@ -200,25 +207,18 @@ int genStreet(const std::string& name, int n, int c){
             return -1;
         }
     }
-    int sz = map[name].size();
-    int dd = 10;
-    for (size_t i = 0; i < map[name].size(); ++i) {
-        segment ss = map[name][i];
-        coordinate c1 = ss.c1;
-        coordinate c2 = ss.c2;
-    }
     return 0;
 }
 
 
 
-int createGraph(int s, int n, int c){
-    int num_of_street = rand() % (s-1) + 2;
+int createGraph(int s, int n, int c, std::ifstream& urandom){
+    int num_of_street = genRandom(urandom, s-1) + 2;
     for (int i = 0; i < num_of_street; ++i) {
         const std::string &name = genStreetName();
         std::vector<segment> segs;
         map[name] = segs;
-        if(genStreet(name, n ,c)==-1){
+        if(genStreet(name, n ,c, urandom)==-1){
             return -1;
         }
     }
@@ -277,13 +277,23 @@ int main(int argc, char **argv) {
     int n = std::atoi(argv[2]);
     int l = std::atoi(argv[3]);
     int c = std::atoi(argv[4]);
+    // open /dev/urandom to read
+    std::ifstream urandom("/dev/urandom");
+    // check that it did not fail
+    if (urandom.fail()) {
+        std::cerr << "Error: cannot open /dev/urandom" << std::endl;
+        exit(1);
+    }
+
+
     while(true){
-        if(createGraph(s, n, c) != 0){
+        if(createGraph(s, n, c, urandom) != 0){
+            std::cerr << "Error: failed to generate valid input for 25 simultaneous attempts" << std::endl;
             exit(1);
         }
         add();
         gg();
-        usleep((rand() % (l-4) + 5));
+        sleep(genRandom(urandom, l-4) + 5);
         rm();
         map.clear();
     }

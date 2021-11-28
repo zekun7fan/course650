@@ -55,6 +55,7 @@ CMAKE_BINARY_DIR = /home/ece650/cmake-build-debug-remote-host
 # The main recursive "all" target.
 all: CMakeFiles/tests.dir/all
 all: CMakeFiles/rgen.dir/all
+all: CMakeFiles/readline_process.dir/all
 all: CMakeFiles/ece650-a3.dir/all
 all: CMakeFiles/ece650-a2.dir/all
 
@@ -68,6 +69,7 @@ preinstall:
 # The main recursive "clean" target.
 clean: CMakeFiles/tests.dir/clean
 clean: CMakeFiles/rgen.dir/clean
+clean: CMakeFiles/readline_process.dir/clean
 clean: CMakeFiles/ece650-a3.dir/clean
 clean: CMakeFiles/ece650-a2.dir/clean
 
@@ -80,7 +82,7 @@ clean: CMakeFiles/ece650-a2.dir/clean
 CMakeFiles/tests.dir/all:
 	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/depend
 	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ece650/cmake-build-debug-remote-host/CMakeFiles --progress-num=7,8 "Built target tests"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ece650/cmake-build-debug-remote-host/CMakeFiles --progress-num=9,10 "Built target tests"
 .PHONY : CMakeFiles/tests.dir/all
 
 # Build rule for subdir invocation for target.
@@ -107,7 +109,7 @@ CMakeFiles/tests.dir/clean:
 CMakeFiles/rgen.dir/all:
 	$(MAKE) -f CMakeFiles/rgen.dir/build.make CMakeFiles/rgen.dir/depend
 	$(MAKE) -f CMakeFiles/rgen.dir/build.make CMakeFiles/rgen.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ece650/cmake-build-debug-remote-host/CMakeFiles --progress-num=5,6 "Built target rgen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ece650/cmake-build-debug-remote-host/CMakeFiles --progress-num=7,8 "Built target rgen"
 .PHONY : CMakeFiles/rgen.dir/all
 
 # Build rule for subdir invocation for target.
@@ -126,6 +128,33 @@ rgen: CMakeFiles/rgen.dir/rule
 CMakeFiles/rgen.dir/clean:
 	$(MAKE) -f CMakeFiles/rgen.dir/build.make CMakeFiles/rgen.dir/clean
 .PHONY : CMakeFiles/rgen.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/readline_process.dir
+
+# All Build rule for target.
+CMakeFiles/readline_process.dir/all:
+	$(MAKE) -f CMakeFiles/readline_process.dir/build.make CMakeFiles/readline_process.dir/depend
+	$(MAKE) -f CMakeFiles/readline_process.dir/build.make CMakeFiles/readline_process.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ece650/cmake-build-debug-remote-host/CMakeFiles --progress-num=5,6 "Built target readline_process"
+.PHONY : CMakeFiles/readline_process.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/readline_process.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ece650/cmake-build-debug-remote-host/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/readline_process.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ece650/cmake-build-debug-remote-host/CMakeFiles 0
+.PHONY : CMakeFiles/readline_process.dir/rule
+
+# Convenience name for target.
+readline_process: CMakeFiles/readline_process.dir/rule
+
+.PHONY : readline_process
+
+# clean rule for target.
+CMakeFiles/readline_process.dir/clean:
+	$(MAKE) -f CMakeFiles/readline_process.dir/build.make CMakeFiles/readline_process.dir/clean
+.PHONY : CMakeFiles/readline_process.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/ece650-a3.dir
