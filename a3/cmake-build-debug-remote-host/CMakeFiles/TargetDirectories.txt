@@ -1,0 +1,10 @@
+/home/ece650/cmake-build-debug-remote-host/CMakeFiles/install/strip.dir
+/home/ece650/cmake-build-debug-remote-host/CMakeFiles/install.dir
+/home/ece650/cmake-build-debug-remote-host/CMakeFiles/list_install_components.dir
+/home/ece650/cmake-build-debug-remote-host/CMakeFiles/rebuild_cache.dir
+/home/ece650/cmake-build-debug-remote-host/CMakeFiles/edit_cache.dir
+/home/ece650/cmake-build-debug-remote-host/CMakeFiles/tests.dir
+/home/ece650/cmake-build-debug-remote-host/CMakeFiles/rgen.dir
+/home/ece650/cmake-build-debug-remote-host/CMakeFiles/ece650-a3.dir
+/home/ece650/cmake-build-debug-remote-host/CMakeFiles/install/local.dir
+/home/ece650/cmake-build-debug-remote-host/CMakeFiles/ece650-a2.dir
