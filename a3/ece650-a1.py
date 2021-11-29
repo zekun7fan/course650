@@ -225,40 +225,6 @@ def create_edges(isvertex_map, adj_list):
     return adj_list
 
 
-def show_graph(adj_list, isvertex_map):
-    pmap = {}
-    # show vertices
-    print("V = {")
-    for v in isvertex_map:
-        if isvertex_map[v][0]:
-            pmap[isvertex_map[v][1]] = v
-            # MODIFY9: show two decimal places
-            print(str(isvertex_map[v][1]) + ":  (" + ("%.2f" % v[0]) + "," + ("%.2f" % v[1]) + ")")
-    print("}")
-
-    n = len(adj_list)
-    flag_table = []
-    for i in range(n):
-        flag_table.append(list())
-        for j in range(n):
-            flag_table[i].append(False)
-    # show edges
-    # MODIFY10: firstly add edges to a list(doesn't change what edges to output), then print these edges with a comma
-    # if it is not the last one. Otherwise print the last edge without a comma
-    edgelist = list()
-    for i in range(1, len(adj_list)):
-        for neighbor_snum in adj_list[i]:
-            if i != neighbor_snum and not flag_table[i][neighbor_snum]:
-                edgelist.append(str("<" + str(i) + "," + str(neighbor_snum) + ">"))
-                flag_table[i][neighbor_snum] = True
-                flag_table[neighbor_snum][i] = True
-    print("E = {")
-    for i in range(len(edgelist)):
-        if i < len(edgelist)-1:
-            print (edgelist[i] + ",")
-        else:
-            print (edgelist[i])
-    print("}")
 
 
 def output_to_a2(adj_list, isvertex_map):
@@ -272,7 +238,6 @@ def output_to_a2(adj_list, isvertex_map):
             # MODIFY9: show two decimal places
             count = count + 1
             vertex_map[str(isvertex_map[v][1])] = str(count)
-            # print(str(isvertex_map[v][1]) + ":  (" + ("%.2f" % v[0]) + "," + ("%.2f" % v[1]) + ")")
 
     n = len(adj_list)
     flag_table = []

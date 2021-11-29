@@ -78,7 +78,7 @@ int main (int argc, char **argv) {
 
     pid_t pid2 = fork();
     // fork a1
-    if (pid2== 0){
+    if (pid2 == 0){
         // setup read
         close(0);
         dup(p1[0]);

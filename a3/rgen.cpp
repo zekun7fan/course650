@@ -35,7 +35,7 @@ std::unordered_map<std::string, std::vector<segment>> map;
 
 
 // assume that s1, s2'length > 0
-int isOverlap(segment s1, segment s2){
+bool isOverlap(segment s1, segment s2){
     // seg1
     coordinate c1 = s1.c1;
     coordinate c2 = s1.c2;
@@ -45,11 +45,11 @@ int isOverlap(segment s1, segment s2){
 
     // c1==c3 and c2==c4
     if (c1.x==c3.x && c1.y==c3.y && c2.x==c4.x && c2.y==c4.y){
-        return -1;
+        return true;
     }
     // c1==c4 and c2==c3
     if (c1.x==c4.x && c1.y==c4.y && c2.x==c3.x && c2.y==c3.y){
-        return -1;
+        return true;
     }
 
     // case1: s1,s2 are both horizontal
@@ -57,16 +57,16 @@ int isOverlap(segment s1, segment s2){
         // c3 is between c1 and c2
         // or c4 is between c1 and c2
         if (c1.x == c3.x && ((c3.y-c1.y)*(c3.y-c2.y)<0 || (c4.y-c1.y)*(c4.y-c2.y)<0)){
-            return -1;
+            return true;
         }else{
-            return 0;
+            return false;
         }
     }
     if (c1.x==c2.x && c3.x != c4.x){
-        return 0;
+        return false;
     }
     if (c1.x != c2.x && c3.x==c4.x){
-        return 0;
+        return false;
     }
     // case2: s1,s2's slope are the same
     int slope1 = (c2.y-c1.y) / (c2.x-c1.x);
@@ -74,9 +74,9 @@ int isOverlap(segment s1, segment s2){
     int b1 = c2.y-slope1*c2.x;
     int b2 = c4.y-slope2*c4.x;
     if (slope1 == slope2 && b1==b2 && ((c3.y-c1.y)*(c3.y-c2.y)<0 || (c4.y-c1.y)*(c4.y-c2.y)<0)){
-        return -1;
+        return true;
     }
-    return 0;
+    return false;
 }
 
 bool isNonZeroLength(segment s1){
@@ -88,13 +88,20 @@ bool isNonZeroLength(segment s1){
     return true;
 }
 
-std::string genStreetName(){
+unsigned int genRandom(std::ifstream& urandom, int upper){
+    unsigned int num = 100;
+    urandom.read((char *)&num, sizeof(int));
+    return num % upper;
+}
+
+
+std::string genStreetName(std::ifstream& urandom){
     int size = sizeof(alpha);
-    int len = rand() % 18 + 3;
+    int len = genRandom(urandom, 18) + 3;
     std::string res;
     while(true){
         for (int i = 0; i < len; ++i) {
-            res+= alpha[(rand()%size)];
+            res+= alpha[genRandom(urandom, size)];
         }
         if (map.find(res) != map.end()){
             res.clear();
@@ -102,12 +109,6 @@ std::string genStreetName(){
             return res;
         }
     }
-}
-
-unsigned int genRandom(std::ifstream& urandom, int upper){
-    unsigned int num = 100;
-    urandom.read((char *)&num, sizeof(int));
-    return num % upper;
 }
 
 
@@ -215,7 +216,7 @@ int genStreet(const std::string& name, int n, int c, std::ifstream& urandom){
 int createGraph(int s, int n, int c, std::ifstream& urandom){
     int num_of_street = genRandom(urandom, s-1) + 2;
     for (int i = 0; i < num_of_street; ++i) {
-        const std::string &name = genStreetName();
+        const std::string &name = genStreetName(urandom);
         std::vector<segment> segs;
         map[name] = segs;
         if(genStreet(name, n ,c, urandom)==-1){
@@ -284,8 +285,6 @@ int main(int argc, char **argv) {
         std::cerr << "Error: cannot open /dev/urandom" << std::endl;
         exit(1);
     }
-
-
     while(true){
         if(createGraph(s, n, c, urandom) != 0){
             std::cerr << "Error: failed to generate valid input for 25 simultaneous attempts" << std::endl;
@@ -297,5 +296,4 @@ int main(int argc, char **argv) {
         rm();
         map.clear();
     }
-
 }
