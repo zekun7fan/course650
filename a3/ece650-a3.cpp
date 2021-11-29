@@ -127,16 +127,11 @@ int main (int argc, char **argv) {
         exit(1);
     }
 
-
-    pid_t id = wait(0);
+    pid_t id = waitpid(pid1, nullptr, 0);
     if (id==pid1){
         kill(pid2, SIGTERM);
         kill(pid3, SIGTERM);
         kill(pid4, SIGTERM);
-    }else if (id == pid4){
-        kill(pid1, SIGTERM);
-        kill(pid2, SIGTERM);
-        kill(pid3, SIGTERM);
     }
 
     return 0;
