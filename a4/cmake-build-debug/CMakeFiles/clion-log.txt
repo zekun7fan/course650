@@ -1,0 +1,21 @@
+/usr/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /tmp/tmp.iMb2LBeubo
+-- Could NOT find ZLIB (missing: ZLIB_LIBRARY ZLIB_INCLUDE_DIR) 
+CMake Error: The following variables are used in this project, but they are set to NOTFOUND.
+Please set them or make sure they are set and tested correctly in the CMake files:
+ZLIB_INCLUDE_DIR (ADVANCED)
+   used as include directory in directory /tmp/tmp.iMb2LBeubo/minisat
+   used as include directory in directory /tmp/tmp.iMb2LBeubo/minisat
+   used as include directory in directory /tmp/tmp.iMb2LBeubo/minisat
+   used as include directory in directory /tmp/tmp.iMb2LBeubo/minisat
+   used as include directory in directory /tmp/tmp.iMb2LBeubo/minisat
+   used as include directory in directory /tmp/tmp.iMb2LBeubo/minisat
+   used as include directory in directory /tmp/tmp.iMb2LBeubo/minisat
+   used as include directory in directory /tmp/tmp.iMb2LBeubo/minisat
+   used as include directory in directory /tmp/tmp.iMb2LBeubo/minisat
+   used as include directory in directory /tmp/tmp.iMb2LBeubo/minisat
+ZLIB_LIBRARY
+    linked by target "minisat-lib-shared" in directory /tmp/tmp.iMb2LBeubo/minisat
+    linked by target "minisat-lib-static" in directory /tmp/tmp.iMb2LBeubo/minisat
+
+-- Configuring incomplete, errors occurred!
+See also "/tmp/tmp.iMb2LBeubo/cmake-build-debug/CMakeFiles/CMakeOutput.log".
