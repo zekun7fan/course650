@@ -25,6 +25,7 @@ void compute();
 bool compute_vertex_cover(int size, std::vector<int> result);
 
 int main(int argc, char **argv) {
+    std::cout << "begin" << std::endl;
     while (!std::cin.eof()) {
         std::string input_str;
         std::getline(std::cin, input_str);
