@@ -6,6 +6,9 @@
 #include <regex>
 #include <stdlib.h>
 #include <memory>
+#include "./minisat/minisat/core/SolverTypes.h"
+#include "./minisat/minisat/core/Solver.h"
+#include "./minisat/minisat/mtl/Vec.h"
 
 
 std::vector<std::vector<int>> adjlist;
