@@ -95,7 +95,7 @@ bool compute_vertex_cover(int size, std::vector<int> result){
     Minisat::Lit input[num_of_vertex][size];
     for (int i = 0; i < num_of_vertex; ++i) {
         for (int j = 0; j < size; ++j) {
-            literls[i][j] = Minisat::mkLit(solver->newVar());
+            input[i][j] = Minisat::mkLit(solver->newVar());
         }
     }
     // type 1
@@ -127,7 +127,7 @@ bool compute_vertex_cover(int size, std::vector<int> result){
 
     // type 4
     for (int i = 0; i < num_of_vertex; ++i) {
-        for (int j = 0; j < adjlist[i].size(); ++j) {
+        for (size_t j = 0; j < adjlist[i].size(); ++j) {
             if (i < j){
                 Minisat::vec<Minisat::Lit> temp_clause{};
                 for (int k = 0; k < size; ++k) {
