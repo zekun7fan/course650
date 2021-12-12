@@ -127,7 +127,8 @@ bool compute_vertex_cover(int size, std::vector<int> result){
 
     // type 4
     for (int i = 0; i < num_of_vertex; ++i) {
-        for (size_t j = 0; j < adjlist[i].size(); ++j) {
+        int adj_len = (int)adjlist[i].size();
+        for (int j = 0; j < adj_len; ++j) {
             if (i < j){
                 Minisat::vec<Minisat::Lit> temp_clause{};
                 for (int k = 0; k < size; ++k) {
