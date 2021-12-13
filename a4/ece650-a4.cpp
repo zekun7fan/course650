@@ -25,10 +25,9 @@ int num_of_vertex = 0;
 
 void compute();
 
-bool compute_vertex_cover(int size, std::vector<int> result);
+std::vector<int> compute_vertex_cover(int size);
 
 int main(int argc, char **argv) {
-    std::cout << "begin" << std::endl;
     while (!std::cin.eof()) {
         std::string input_str;
         std::getline(std::cin, input_str);
@@ -56,8 +55,8 @@ int main(int argc, char **argv) {
                     break;
                 }
                 if (src != dst) {
-                    adjlist[src-1].push_back(dst-1);
-                    adjlist[dst-1].push_back(src-1);
+                    adjlist[src - 1].push_back(dst - 1);
+                    adjlist[dst - 1].push_back(src - 1);
                 }
                 cur++;
             }
@@ -68,28 +67,29 @@ int main(int argc, char **argv) {
     return 0;
 }
 
-void compute(){
+void compute() {
     std::vector<int> result;
     int max = num_of_vertex / 2;
     for (int i = 1; i <= max; ++i) {
-        bool r = compute_vertex_cover(i, result);
-        if (r){
+        result = compute_vertex_cover(i);
+        if (!result.empty()) {
             break;
         }
     }
+
     std::string str;
     int len = result.size();
     for (int i = 0; i < len; ++i) {
-        str += result[i];
-        if(i < len){
+        str += std::to_string(result[i]);
+        if (i < len) {
             str += " ";
         }
     }
     std::cout << str << std::endl;
 }
 
-bool compute_vertex_cover(int size, std::vector<int> result){
-    result.clear();
+std::vector<int> compute_vertex_cover(int size) {
+    std::vector<int> result;
     std::unique_ptr<Minisat::Solver> solver(new Minisat::Solver());
 
     Minisat::Lit input[num_of_vertex][size];
@@ -109,8 +109,8 @@ bool compute_vertex_cover(int size, std::vector<int> result){
 
     // type 2
     for (int i = 0; i < num_of_vertex; ++i) {
-        for (int j = 0; j < size; ++j) {
-            for (int k = j+1; k < size; ++k) {
+        for (int j = 0; j < size-1; ++j) {
+            for (int k = j + 1; k < size; ++k) {
                 solver->addClause(~input[i][j], ~input[i][k]);
             }
         }
@@ -118,8 +118,8 @@ bool compute_vertex_cover(int size, std::vector<int> result){
 
     // type 3
     for (int i = 0; i < size; ++i) {
-        for (int j = 0; j < num_of_vertex; ++j) {
-            for (int k = j+1; k < num_of_vertex; ++k) {
+        for (int j = 0; j < num_of_vertex-1; ++j) {
+            for (int k = j + 1; k < num_of_vertex; ++k) {
                 solver->addClause(~input[j][i], ~input[k][i]);
             }
         }
@@ -127,31 +127,32 @@ bool compute_vertex_cover(int size, std::vector<int> result){
 
     // type 4
     for (int i = 0; i < num_of_vertex; ++i) {
-        int adj_len = (int)adjlist[i].size();
+        int adj_len = (int) adjlist[i].size();
         for (int j = 0; j < adj_len; ++j) {
-            if (i < j){
+            int neighbor = adjlist[i][j];
+            if (i < neighbor) {
                 Minisat::vec<Minisat::Lit> temp_clause{};
                 for (int k = 0; k < size; ++k) {
                     temp_clause.push(input[i][k]);
-                    temp_clause.push(input[j][k]);
+                    temp_clause.push(input[neighbor][k]);
                 }
                 solver->addClause(temp_clause);
             }
         }
     }
     bool res = solver->solve();
-    if (res){
-        std::string str;
+
+    if (res) {
         for (int i = 0; i < num_of_vertex; ++i) {
             for (int j = 0; j < size; ++j) {
-                if(Minisat::toInt(solver->modelValue(input[i][j]))==1){
-                    result.push_back(i+1);
+                if (Minisat::toInt(solver->modelValue(input[i][j])) == 0) {
+                    result.push_back(i + 1);
                     break;
                 }
             }
         }
     }
-    return res;
+    return result;
 }
 
 
