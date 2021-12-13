@@ -69,8 +69,7 @@ int main(int argc, char **argv) {
 
 void compute() {
     std::vector<int> result;
-    int max = num_of_vertex / 2;
-    for (int i = 1; i <= max; ++i) {
+    for (int i = 1; i <= num_of_vertex; ++i) {
         result = compute_vertex_cover(i);
         if (!result.empty()) {
             break;
