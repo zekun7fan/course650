@@ -60,7 +60,11 @@ int main(int argc, char **argv) {
                 }
                 cur++;
             }
-            compute();
+            if(num_of_vertex <= 1){
+                std::cout << "" << std::endl;
+            }else{
+                compute();
+            }
             state = 3;
         }
     }
