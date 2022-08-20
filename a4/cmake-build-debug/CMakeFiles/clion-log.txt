@@ -1,17 +1,4 @@
-/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_DEPENDS_USE_COMPILER=FALSE -G "CodeBlocks - Unix Makefiles" /Users/fanzekun/Documents/uw_courses_2021fall/ece650/z62fan/a4
-CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
-  Compatibility with CMake < 2.8.12 will be removed from a future version of
-  CMake.
+CMake executable not found: /usr/bin/cmake Configure Disable profile
 
-  Update the VERSION argument <min> value or use a ...<max> suffix to tell
-  CMake that the project does not need compatibility with older versions.
-
-
-CMake Error at CMakeLists.txt:7 (message):
-  MiniSat not found.  Use `git clone https://github.com/agurfinkel/minisat`
-  to check it out.
-
-
--- Configuring incomplete, errors occurred!
-See also "/Users/fanzekun/Documents/uw_courses_2021fall/ece650/z62fan/a4/cmake-build-debug/CMakeFiles/CMakeOutput.log".
-See also "/Users/fanzekun/Documents/uw_courses_2021fall/ece650/z62fan/a4/cmake-build-debug/CMakeFiles/CMakeError.log".
+Cannot get compiler information:
+	Unable to create a temporary file
